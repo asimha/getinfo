@@ -57,3 +57,21 @@
 	top:1px;
 }
 
+.lable{
+	width: 300px;
+	height: 20px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}
+
+textarea#styled {
+	width: 900px;
+	height: 500px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
