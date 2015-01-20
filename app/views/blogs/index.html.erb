@@ -1,3 +1,18 @@
-<h1>First blog</h1>
+<div class="header">
+	<div>
+	<h1>GetInfo</h1>
+		<%= button_to 'Create Blog', new_blog_path, method: "get", class: "myButton" %>
+	</div>
+</div>
 
-<%= link_to 'Create Blog', new_blog_path %>
+<div class="div-col">
+	<% @blogs.each do |blog|%>
+<div class="box" >
+		<h2><%= blog.title %></h2>
+		<br/>
+		<p class="p">
+		<%= blog.text %>
+	</p>
+</div>
+	<% end %>
+</div>

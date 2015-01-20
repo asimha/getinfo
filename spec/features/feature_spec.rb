@@ -8,11 +8,11 @@ feature "The user should be able to read and create the blog" do
 	end
 
 	scenario "Reader should be able to view the blog" do
-    expect(page).to have_text("First blog")
+    expect(page).to have_text("GetInfo")
   end
 
   scenario "User should be able to see create blog button" do
-    click_link "Create Blog"
+    click_button "Create Blog"
   	expect(page).to have_selector("textarea")
   	expect(page).to have_selector("input")
   	fill_in "Title", with: "My Blog"
