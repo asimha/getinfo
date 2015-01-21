@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe BlogsController, :type => :controller do
 
-	let(:user) {FactoryGirl.create(:user)}
+  let(:user) {FactoryGirl.create(:user)}
+  let(:blog) {FactoryGirl.create(:blog)}
+  let(:blog1) {FactoryGirl.create(:blog)}
+	let(:blog2) {FactoryGirl.create(:blog)}
 
 	before(:each) do
    sign_in(user)
@@ -12,6 +15,7 @@ RSpec.describe BlogsController, :type => :controller do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
+      expect(assigns[:blogs]).to match_array([blog, blog1, blog2])
     end
   end
 
