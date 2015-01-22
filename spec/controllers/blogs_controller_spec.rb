@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe BlogsController, :type => :controller do
 
   let(:user) {FactoryGirl.create(:user)}
-  let(:blog) {FactoryGirl.create(:blog)}
+  let(:user1) {FactoryGirl.create(:user)}
+  let(:blog0) {FactoryGirl.create(:blog)}
   let(:blog1) {FactoryGirl.create(:blog)}
 	let(:blog2) {FactoryGirl.create(:blog)}
 
@@ -15,7 +16,7 @@ RSpec.describe BlogsController, :type => :controller do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
-      expect(assigns[:blogs]).to match_array([blog, blog1, blog2])
+      expect(assigns[:blogs]).to match_array([blog0, blog1, blog2])
     end
   end
 
@@ -29,8 +30,9 @@ RSpec.describe BlogsController, :type => :controller do
         }
       }
       expect do
-        post :create, blog_params
+        post :create, blog_params, user_id: user.id
       end.to change(Blog, :count).by(1)
+      expect(user.blogs.count).to eq(1)
 
       get :show, id: Blog.first.id
       expect(assigns[:blog]).to eq(Blog.first)
