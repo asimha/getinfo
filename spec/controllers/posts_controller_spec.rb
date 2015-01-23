@@ -6,7 +6,7 @@ RSpec.describe PostsController, :type => :controller do
   let(:user1) {FactoryGirl.create(:user)}
   let(:post0) {FactoryGirl.create(:post)}
   let(:post1) {FactoryGirl.create(:post)}
-	let(:post2) {FactoryGirl.create(:post)}
+	let(:post2) {FactoryGirl.create(:post, user_id: user.id )}
 
 	before(:each) do
    sign_in(user)
@@ -20,7 +20,7 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST create and GET show" do
     
     it "user should be able to create and view the post" do
       post_params = {
@@ -38,6 +38,14 @@ RSpec.describe PostsController, :type => :controller do
       expect(assigns[:post]).to eq(Post.first)
     end
   
+  end
+
+  describe "GET user_posts" do
+
+    it  "should return all the post of the current user" do
+      get :user_posts, user: user
+      expect(assigns[:posts]).to match_array([post2])
+    end
   end
 
 end

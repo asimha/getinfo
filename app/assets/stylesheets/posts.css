@@ -3,12 +3,15 @@
     background: #dddddd;
     width: 300px;
     border-radius: 25px;
+    float: left;
+    margin-right: 70px;
+    margin-bottom: 30px;
     }
 
     .div-col {
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
     -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
     -moz-column-gap: 40px; /* Firefox */
     column-gap: 40px;

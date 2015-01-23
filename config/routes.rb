@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'posts#index'
 
-  resources :posts
 
+  get 'posts/user_posts' => 'posts#user_posts'
+
+  resources :posts
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
