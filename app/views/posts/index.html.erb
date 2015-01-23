@@ -2,19 +2,19 @@
 <div class="header">
 	<div>
 	<h1>GetInfo</h1>
-		<%= button_to 'Create Blog', new_blog_path, method: "get", class: "myButton" %>
+		<%= button_to 'Create post', new_post_path, method: "get", class: "myButton" %>
 	</div>
 </div>
 
 <div class="div-col">
-	<% @blogs.each do |blog|%>
+	<% @posts.each do |post|%>
 <div class="box" >
-		<h2><%= blog.title %></h2>
+		<h2><%= post.title %></h2>
 		<br/>
 		<p class="p">
-		<%= blog.text %>
+		<%= post.text %>
 	</p>
-	<%= button_to 'Read More', blog_path(blog), method: "get" %>
+	<%= button_to 'Read More', post_path(post), method: "get" %>
 </div>
 	<% end %>
 </div>

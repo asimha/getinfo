@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #associations
-  has_many :blogs
+  has_many :posts
   
 end

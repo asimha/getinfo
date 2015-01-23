@@ -1,4 +1,4 @@
-class Blog < ActiveRecord::Base
+class Post < ActiveRecord::Base
 
 	#associaton
 	belongs_to :user

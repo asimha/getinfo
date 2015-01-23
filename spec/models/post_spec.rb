@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Blog, :type => :model do
+RSpec.describe Post, :type => :model do
   
 	describe "Check Validation" do
 		it "should validate presence of text and title positive" do
 
-			b = Blog.new()
-		  b.title = "New Blog"
+			b = Post.new()
+		  b.title = "New Post"
 		  b.text = "text" 
 		  
 		  expect(b).to be_valid
@@ -14,8 +14,8 @@ RSpec.describe Blog, :type => :model do
 
 		it "should validate presence of text and title negative" do
 
-			b = Blog.new()
-		  b.title = "New Blog"
+			b = Post.new()
+		  b.title = "New Post"
 		  b.text = nil  # Note this line
 		  
 		  expect(b).to be_invalid
