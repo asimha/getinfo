@@ -1,20 +1,25 @@
 require_relative '../spec_helper'
 require_relative '../rails_helper'
 
+
 feature "The user should be able to read and create the post" do
 
+before(:each) {
+  capybara_sign_in
+}
+
   let(:user) {FactoryGirl.create(:user)}
+  let(:post) {FactoryGirl.create(:post, title: "New post", text: "loriem ipsum", user_id: user.id)}
 
 	scenario "Reader should be able to view the post" do
-    capybara_sign_in
+    post
     visit "/"
-    expect(page).to have_text("GetInfo")
+    expect(page).to have_text("New post")
   end
 
   scenario "User should be able to create and view post" do
-    capybara_sign_in
     expect(page).to have_text("GetInfo")
-    click_button "Create post"
+    click_link "Create post"
   	expect(page).to have_selector("textarea")
   	expect(page).to have_selector("input")
   	fill_in "Title", with: "My post"
@@ -34,7 +39,6 @@ feature "View the complete post" do
   scenario "User should be able to view complete post details" do
     post
     capybara_sign_in
-    visit "/"
     expect(page).to have_text("New post")
     expect(page).to have_text("loriem ipsum")
     click_button "Read More"
