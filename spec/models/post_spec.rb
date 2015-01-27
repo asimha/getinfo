@@ -16,7 +16,7 @@ RSpec.describe Post, :type => :model do
 
 			b = Post.new()
 		  b.title = "New Post"
-		  b.text = nil  # Note this line
+		  b.text = nil
 		  
 		  expect(b).to be_invalid
 		end

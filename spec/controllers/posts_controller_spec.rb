@@ -20,9 +20,9 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
-  describe "POST create and GET show" do
+  describe "POST create" do
     
-    it "user should be able to create and view the post" do
+    it "user should be able to create a post" do
       post_params = {
         posts: {
           title: "My post",
@@ -33,11 +33,28 @@ RSpec.describe PostsController, :type => :controller do
         post :create, post_params, user_id: user.id
       end.to change(Post, :count).by(1)
       expect(user.posts.count).to eq(1)
+    end
 
-      get :show, id: Post.first.id
-      expect(assigns[:post]).to eq(Post.first)
+    it "should not create a post with invalid params" do
+      post_params = {
+        posts: {
+          title: nil,
+          text: "post text",
+        }
+      }
+      expect do
+        post :create, post_params, user_id: user.id
+      end.to change(Post, :count).by(0)
+      expect(user.posts.count).to eq(0)
     end
   
+  end
+
+  describe "GET show" do
+    it "should return post for which id is passed" do
+      get :show, id: post0.id
+      expect(assigns[:post]).to eq(post0)
+    end
   end
 
   describe "GET user_posts" do
@@ -45,6 +62,11 @@ RSpec.describe PostsController, :type => :controller do
     it  "should return all the post of the current user" do
       get :user_posts, user: user
       expect(assigns[:posts]).to match_array([post2])
+    end
+
+    it  "should not return other users post" do
+      get :user_posts, user: user
+      expect(assigns[:posts].count).to eq(0)
     end
   end
 

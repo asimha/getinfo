@@ -32,7 +32,7 @@ feature "View the complete post" do
   let(:post) {FactoryGirl.create(:post, title: "New post", text: "loriem ipsum loriem ipsum sdfsdf sdkjfsdf; sldfhsdlfhj sd;fjlhjsdlfg sdjfsdfg kgsdf;sdgf loriem ipsum", user_id: user.id)}
 
   scenario "User should be able to view complete post details" do
-    [post]
+    post
     capybara_sign_in
     visit "/"
     expect(page).to have_text("New post")
