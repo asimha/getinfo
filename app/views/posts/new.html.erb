@@ -1,13 +1,15 @@
+<div class="read_post">
 <p class="p"><b>New post</b></p>
-<%= form_for :posts, url: posts_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: "lable" %>
-    <%= f.submit class: "myButton" %>
-  </p>
- 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text, class: "styled" %>
-  </p>
-<% end %>
+	<%= form_for :posts, url: posts_path do |f| %>
+	  <p>
+	    <%= f.label :title %><br>
+	    <%= f.text_field :title, class: "lable" %>
+	  </p>
+	 
+	  <p>
+	    <%= f.label :text %><br>
+	    <%= f.text_area :text, class: "styled" %>
+	  </p>
+	  <%= f.submit class: "myButton" %>
+	<% end %>
+</div>

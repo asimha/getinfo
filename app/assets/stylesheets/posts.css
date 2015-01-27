@@ -28,13 +28,21 @@
  	text-align: center;
  	color: #A83636;
 	font-size: 30px;
-	text-shadow: rgb(46, 46, 46) 0px 4px 5px;	 	
+	text-shadow: rgb(46, 46, 46) 0px 4px 5px;
+	background: #F5F1F0;	 	
  }
 
  .title{
  	padding: 10px 10px 10px;
  	background: #9DEBFA;
  }
+
+
+ .logout {
+	position: absolute; 
+	right: 50px;
+	font-size: 15px;
+}
 
  .myButton {
 	background-color:#7892c2;
@@ -76,5 +84,16 @@ textarea.styled {
 	background-image: url(bg.gif);
 	background-position: bottom right;
 	background-repeat: no-repeat;
+	resize: none;
+}
+
+.read_post {
+	padding: 70px 100px;
+}
+
+.blog_content {
+	font-size: 20px;
+	font-style: italic;	
+	white-space: pre-wrap;
 }
 

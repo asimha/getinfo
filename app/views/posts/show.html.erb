@@ -1,9 +1,13 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
+<div class="read_post">
+	<article>
+		<p>
+		  <h1><u><%= @post.title %></u></h1>
+		</p>
+	 
+		<p class = "blog_content">
+		  <%= @post.text %>
+		</p>
+	</article>
+
+<%= link_to "Home", root_path, class: 'myButton' %>
+</div>
