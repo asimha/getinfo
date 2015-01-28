@@ -4,5 +4,5 @@
 		<p class="p">
 		<%= post.text %>
 	</p>
-	<%= button_to 'Read More', post_path(post), method: "get" %>
+	<%= button_to 'Read More', group_post_path(@group, post), method: "get" %>
 </div>

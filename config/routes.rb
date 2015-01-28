@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   get 'posts/index'
 
@@ -12,7 +13,11 @@ Rails.application.routes.draw do
 
   get 'posts/user_posts' => 'posts#user_posts'
 
-  resources :posts
+  resources :groups do 
+
+    resources :posts
+    
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

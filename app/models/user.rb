@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   #associations
   has_many :posts
+  has_many :groups
   
 end
