@@ -11,13 +11,14 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @post = Post.where("group_id = ? ", params[:id])
   end
 
   def create
   	@group = Group.new(group_params)
 	  @group.user_id = current_user.id
 	  if @group.save
-	   render 'index'
+	   redirect_to groups_path
     else
       render 'new'
     end

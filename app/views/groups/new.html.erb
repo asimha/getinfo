@@ -3,7 +3,7 @@
 	<%= form_for :groups, url: groups_path do |f| %>
 	  <p>
 	    <%= f.label :name %><br>
-	    <%= f.text_field :name, class: "lable" %>
+	    <%= f.text_field :name, class: "lable", id: 'group_name' %>
 	  </p>
 	  <%= f.submit class: "myButton" %>
 	<% end %>
