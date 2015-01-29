@@ -28,16 +28,14 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     current_user.follow(@group)
     current_user.save
-    redirect_to :back
-    # redirect_to groups_path
+    redirect_to groups_path
   end
 
   def unfollow
     @group = Group.find(params[:id])
     current_user.stop_following(@group)
     current_user.save
-    # redirect_to groups_path
-    redirect_to :back
+    redirect_to groups_path
   end
   private
   

@@ -43,4 +43,19 @@ RSpec.describe GroupsController, :type => :controller do
     end
   end
 
+  describe "GET follow" do
+    it "user should be able to follow the group" do
+      get :follow, id: group0.id
+      expect(user.following?(group0)).to eq(true)
+    end
+  end
+
+describe "GET unfollow" do
+    it "user should be able to follow the group" do
+      user.follow(group0)
+      expect(user.following?(group0)).to eq(true)
+      get :unfollow, id: group0.id
+      expect(user.following?(group0)).to eq(false)
+    end
+  end
 end
