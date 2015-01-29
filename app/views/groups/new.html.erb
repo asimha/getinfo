@@ -1,2 +1,10 @@
-<h1>Group#new</h1>
-<p>Find me in app/views/group/new.html.erb</p>
+<div class="read_post">
+<p class="p"><b>New post</b></p>
+	<%= form_for :groups, url: groups_path do |f| %>
+	  <p>
+	    <%= f.label :name %><br>
+	    <%= f.text_field :name, class: "lable" %>
+	  </p>
+	  <%= f.submit class: "myButton" %>
+	<% end %>
+</div>

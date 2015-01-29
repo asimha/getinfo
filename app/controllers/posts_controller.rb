@@ -4,24 +4,24 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all
-    @group = Group.where("id =  1")
+    @group = Group.find(params[:group_id])
   end
   
   def new
-    @group = Group.where("id =  1")
+    @group = Group.find(params[:group_id])
   end
 
   def show
     @post = Post.find(params[:id])
-    @group = Group.where("id =  1")
+    @group = Group.find(params[:group_id])
   end
 
   def create
 	  @post = Post.new(post_params)
 	  @post.user_id = current_user.id
-    @post.group_id = 1
+    @post.group_id = params[:group_id]
 	  if @post.save
-	   redirect_to group_post_path(@post.group_id, @post)
+   redirect_to group_post_path(@post.group_id, @post)
     else
       render 'new'
     end

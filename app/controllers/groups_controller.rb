@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+
+  before_action :authenticate_user!
+  
   def index
   	@groups = Group.all
   end
@@ -6,11 +9,15 @@ class GroupsController < ApplicationController
   def new
   end
 
+  def show
+    @group = Group.find(params[:id])
+  end
+
   def create
   	@group = Group.new(group_params)
 	  @group.user_id = current_user.id
 	  if @group.save
-	   redirect_to @group
+	   render 'index'
     else
       render 'new'
     end
