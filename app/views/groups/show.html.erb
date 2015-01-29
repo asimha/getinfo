@@ -1,6 +1,6 @@
-<div class="read_post">
 <%= link_to "Create Post", new_group_post_path(@group.id), class: 'myButton' %>
 
+<div class="read_post">
 <% @post.each do |post| %>
 	<div class="box" >
 		<h2><%= post.title %></h2>
