@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get 'posts/user_posts' => 'posts#user_posts'
 
   resources :groups do 
+    member do
+      get :follow
+      get :unfollow
+    end
 
     resources :posts
     

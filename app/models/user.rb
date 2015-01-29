@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #associations
-  has_many :posts
-  has_many :groups
+  has_many :posts, :dependent => :destroy
+  has_many :groups, :dependent => :destroy
+
+  acts_as_follower
   
 end

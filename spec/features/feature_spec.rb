@@ -13,7 +13,7 @@ feature "Group" do
     expect(page).to have_selector("*/form/p/input")
     fill_in "groups[name]", with: "My Group"
     click_button "Save Groups"
-    expect(page).to have_text("My Group")
+    expect(page).to have_link("My Group")
   end
 
 end
@@ -71,6 +71,32 @@ feature "View the complete post" do
     click_button "Read More"
     expect(page).to have_text("New post")
     expect(page).to have_text("loriem ipsum loriem ipsum sdfsdf sdkjfsdf; sldfhsdlfhj sd;fjlhjsdlfg sdjfsdfg kgsdf;sdgf loriem ipsum")
+  end
+
+end
+
+
+feature "group permissions" do
+  let(:user) {FactoryGirl.create(:user)}
+  let(:user1) {FactoryGirl.create(:user, email:"user1@domain.com")}
+  let(:group) {FactoryGirl.create(:group, name: "Others Group")}
+  
+  scenario "User should not be able to read post of the group which they are not following" do
+    group
+    capybara_sign_in
+    expect(page).not_to have_link("Others Group")
+    expect(page).to have_link("Follow")
+  end
+
+  scenario "user should be able to read post from the group he is following" do
+    [group, user]
+
+    capybara_sign_in
+    expect(page).not_to have_link("Others Group")
+    expect(page).to have_link("Follow")
+    click_link "Follow"
+    expect(page).to have_link("Unfollow")
+
   end
 
 end

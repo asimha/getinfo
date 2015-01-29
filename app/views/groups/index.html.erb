@@ -11,8 +11,13 @@
 <div class="div-col">
 	<% @groups.each do |group|%>
 		<div class="box" >
+			<% if current_user.following?(group) %>
 			<h2><%= link_to group.name, group_path(group) %></h2>
-			<%= link_to "Follow", "#" %>
+			<%= link_to "Unfollow", unfollow_group_path(group)%>
+			<% else %>
+			<h2><%= group.name %></h2>
+			<%= link_to "Follow", follow_group_path(group)%>
+			<% end %>
 		</div>
 	<% end %>
 </div>
