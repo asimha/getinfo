@@ -2,13 +2,7 @@
 
 <div class="read_post">
 <% @post.each do |post| %>
-	<div class="box" >
-		<h2><%= post.title %></h2>
-		<br/>
-		<p class="p">
-		<%= post.text %>
-	</p>
-	<%= button_to 'Read More', group_post_path(post.group_id, post), method: "get" %>
+	<%= render partial: 'posts/post', locals: {post: post, group: @group} %>
 </div>
 
 <% end %>
