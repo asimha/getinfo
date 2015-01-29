@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe GroupsController, :type => :controller do
 
-  let(:group0) {FactoryGirl.create(:group)}
-  let(:group1) {FactoryGirl.create(:group)}
-  let(:group2) {FactoryGirl.create(:group)}
   let(:user) {FactoryGirl.create(:user)}
+  let(:group0) {FactoryGirl.create(:group)}
+  let(:group1) {FactoryGirl.create(:group, user_id: user.id)}
+  let(:group2) {FactoryGirl.create(:group)}
   let(:post1) {FactoryGirl.create(:post, group_id: group0.id)}
   let(:post2) {FactoryGirl.create(:post, group_id: group1.id)}
 
@@ -41,6 +41,13 @@ RSpec.describe GroupsController, :type => :controller do
       get :show, id: group0.id
       expect(assigns[:post]).to match_array([post1])
     end
+  end
+
+  describe "GET my_groups" do
+      it "should give all the groups created by user" do
+        get :my_groups
+      expect(assigns[:groups]).to match_array([group1])
+      end
   end
 
   describe "GET follow" do

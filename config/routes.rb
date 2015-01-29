@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   get 'posts/user_posts' => 'posts#user_posts'
+  get 'my_groups' => 'groups#my_groups'
 
   resources :groups do 
     member do

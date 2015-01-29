@@ -96,10 +96,24 @@ feature "group permissions" do
     expect(page).to have_link("Follow")
     click_link "Follow"
     expect(page).to have_link("Unfollow")
-
   end
 
 end
+  
+  feature "My groups" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:user1) {FactoryGirl.create(:user, email:'user1@domain.com')}
+    let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user.id )}
+    let(:group1) {FactoryGirl.create(:group, name: "user1 group", user_id: user1.id )}
+    
+    scenario "User should able to see all the group he created" do
+      [group, group1]
+      capybara_sign_in
+      click_link "My Groups"
+      expect(page).to have_content("user group")
+      expect(page).to have_no_content("user1 group")
+    end
+  end
 
 def capybara_sign_in
   visit "/users/sign_in"

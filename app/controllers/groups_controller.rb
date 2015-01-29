@@ -25,6 +25,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def my_groups
+    @groups = Group.where("user_id = ?", current_user.id)
+  end
+
    def follow
     @group = Group.find(params[:id])
     current_user.follow(@group)
