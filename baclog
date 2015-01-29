@@ -1,0 +1,24 @@
+backlog stories
+
+Given a group exists which I have not created
+Then I should not be able to read post of that group
+
+Given a group exists with name “my group"
+Then a user should be abel to follow the group
+Then that user will be able to read the post of that group
+
+Given a user following a group
+when he visits the group page
+Then he can apply for membership of that group
+
+Given a user is owner of a group
+when he visits the group page
+Then he should see member requests list
+Then he will be able to make requested users as member of the group
+
+Given a user is member of a group
+When he visits that group page
+Then he will be able to write a post
+
+Given a user is owner of a group
+Then he should be able remove members from that group
