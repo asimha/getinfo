@@ -64,6 +64,7 @@ RSpec.describe PostsController, :type => :controller do
   describe "GET user_posts" do
 
     it  "should return all the post of the current user" do
+      post2
       get :user_posts, user: user
       expect(assigns[:posts]).to match_array([post2])
     end
