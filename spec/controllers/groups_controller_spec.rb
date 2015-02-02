@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe GroupsController, :type => :controller do
 
   let(:user) {FactoryGirl.create(:user)}
-  let(:group0) {FactoryGirl.create(:group)}
+  let(:group0) {FactoryGirl.create(:group, user_id: user.id)}
   let(:group1) {FactoryGirl.create(:group, user_id: user.id)}
   let(:group2) {FactoryGirl.create(:group)}
   let(:post1) {FactoryGirl.create(:post, group_id: group0.id)}
