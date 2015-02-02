@@ -19,3 +19,11 @@ background: #F5F1F0;
 	height: 20px;
 }
 
+#flash_messages{
+	background-color: #D16D73;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	text-align: center;
+}
+
