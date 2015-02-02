@@ -1,7 +1,7 @@
 <%= link_to "Create Post", new_group_post_path(@group.id), class: 'myButton' %>
 
 <div class="read_post">
-	<% @post.each do |post| %>
+	<% @posts.each do |post| %>
 		<%= render partial: 'posts/post', locals: {post: post, group: @group} %>
 	<% end %>
 </div>

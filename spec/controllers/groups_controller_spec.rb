@@ -22,7 +22,7 @@ RSpec.describe GroupsController, :type => :controller do
 
   describe "POST create" do
     it "returns http success" do
-    sign_in(user)
+      sign_in(user)
       group_params = {
         groups: {
           name: "My Group",
@@ -39,14 +39,14 @@ RSpec.describe GroupsController, :type => :controller do
     it "should retun all the post of that group" do 
       
       get :show, id: group0.id
-      expect(assigns[:post]).to match_array([post1])
+      expect(assigns[:posts]).to match_array([post1])
     end
   end
 
   describe "GET my_groups" do
       it "should give all the groups created by user" do
         get :my_groups
-      expect(assigns[:groups]).to match_array([group1])
+        expect(assigns[:groups]).to match_array([group1])
       end
   end
 

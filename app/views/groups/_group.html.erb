@@ -1,9 +1,5 @@
 <div class="box" >		
-	<% if current_user.following?(group) %>
-		<h2><%= link_to group.name, group_path(group) %></h2>	
-	<% else %>
-		<h2><%= group.name %></h2>	
-	<% end %>
+		<h2><%= link_to_if current_user.following?(group), group.name, group_path(group) %></h2>	
 	<%= link_to "Unfollow", unfollow_group_path(group) if current_user.following?(group) && current_user.id != group.user_id%>
 		
 	<%= link_to "Follow", follow_group_path(group) if current_user.id != group.user_id && !current_user.following?(group)%>
