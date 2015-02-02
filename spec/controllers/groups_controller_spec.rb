@@ -16,7 +16,7 @@ RSpec.describe GroupsController, :type => :controller do
   describe "GET index" do
     it "returns http success" do
       get :index
-      expect(assigns[:groups]).to match_array([group0, group1, group2])
+      expect(assigns[:groups]).to include(group0, group1, group2)
     end
   end
 
@@ -39,14 +39,14 @@ RSpec.describe GroupsController, :type => :controller do
     it "should retun all the post of that group" do 
       
       get :show, id: group0.id
-      expect(assigns[:posts]).to match_array([post1])
+      expect(assigns[:posts]).to include(post1)
     end
   end
 
   describe "GET my_groups" do
       it "should give all the groups created by user" do
         get :my_groups
-        expect(assigns[:groups]).to match_array([group1])
+        expect(assigns[:groups]).to include(group1)
       end
   end
 

@@ -17,7 +17,7 @@ RSpec.describe PostsController, :type => :controller do
     it "returns http success" do
       get :index, group_id: group.id
       expect(response).to have_http_status(:success)
-      expect(assigns[:posts]).to match_array([post1, post0, post2])
+      expect(assigns[:posts]).to include(post1, post0, post2)
     end
   end
 
@@ -66,7 +66,7 @@ RSpec.describe PostsController, :type => :controller do
     it  "should return all the post of the current user" do
       post2
       get :user_posts, user: user
-      expect(assigns[:posts]).to match_array([post2])
+      expect(assigns[:posts]).to include(post2)
     end
 
     it  "should not return other users post" do
