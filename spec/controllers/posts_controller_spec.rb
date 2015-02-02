@@ -17,7 +17,7 @@ RSpec.describe PostsController, :type => :controller do
     it "returns http success" do
       get :index, group_id: group.id
       expect(response).to have_http_status(:success)
-      expect(assigns[:posts]).to match_array([post0, post1, post2])
+      expect(assigns[:posts]).to match_array([post1, post0, post2])
     end
   end
 

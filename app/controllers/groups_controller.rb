@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @posts = Post.where("group_id = ? ", params[:id])
+    @posts = @group.posts
   end
 
   def create
