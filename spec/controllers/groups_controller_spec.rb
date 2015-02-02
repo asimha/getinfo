@@ -14,14 +14,14 @@ RSpec.describe GroupsController, :type => :controller do
   end
 
   describe "GET index" do
-    it "returns http success" do
+    it "returns all the group" do
       get :index
       expect(assigns[:groups]).to include(group0, group1, group2)
     end
   end
 
   describe "POST create" do
-    it "returns http success" do
+    it "should able to create the group" do
       sign_in(user)
       group_params = {
         groups: {

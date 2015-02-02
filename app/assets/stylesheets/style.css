@@ -27,3 +27,16 @@ background: #F5F1F0;
 	text-align: center;
 }
 
+.group_header{
+	font-size: 26px;
+	text-align: center;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.group_owner{
+	font-size: 20px;
+	text-decoration: underline;
+	padding: 10px;
+}
+

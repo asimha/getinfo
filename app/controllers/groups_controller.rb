@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @user = User.find(@group.user_id)
     @posts = @group.posts
     authorize @group
   end
