@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PostsController, :type => :controller do
 
   let(:user) {FactoryGirl.create(:user)}
-  let(:user1) {FactoryGirl.create(:user, email: "user1@domain.com")}
+  let(:user1) {FactoryGirl.create(:user)}
   let(:post0) {FactoryGirl.create(:post, user_id: user1.id, group_id: group.id)}
   let(:post1) {FactoryGirl.create(:post)}
   let(:post2) {FactoryGirl.create(:post, user_id: user.id )}
