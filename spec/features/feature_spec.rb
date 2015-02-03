@@ -115,6 +115,26 @@ end
     end
   end
 
+
+  feature "Edit and update post" do
+      let(:user) {FactoryGirl.create(:user)}
+      let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user.id )}
+      let(:post) {FactoryGirl.create(:post, title: "New post", text: "loriem ipsum", user_id: user.id, group_id:group.id)}
+    
+    scenario "Users should be able to edit and update post they have created" do
+      capybara_sign_in
+      visit "/groups/#{group.id}/posts/#{post.id}/edit"
+      expect(page).to have_selector("textarea")
+      expect(page).to have_selector("input")
+      fill_in "Title", with: "My post"
+      fill_in "Text", with: "post Area"
+      click_button "Save Post"
+      expect(page).to have_text("My post")
+      expect(page).to have_text("post Area")
+    end
+  
+  end
+
 def capybara_sign_in
   visit "/users/sign_in"
     expect(page).to have_text("Log in")
