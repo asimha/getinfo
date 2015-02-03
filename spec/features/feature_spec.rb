@@ -48,7 +48,7 @@ before(:each) {
     visit "/groups/#{group.id}/posts/new"
   	fill_in "Title", with: "My post"
   	fill_in "Text", with: "post Area"
-  	click_button "Save Posts"
+  	click_button "Save Post"
     expect(page).to have_text("My post")
     expect(page).to have_text("post Area")
     expect(page).to have_no_content("New post")

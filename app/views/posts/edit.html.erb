@@ -1,0 +1,15 @@
+<h1>Edit Post</h1>
+<%= form_for :post, method: 'patch', url: group_post_path(@post.group_id, @post) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "lable"  %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text, class: "styled" %>
+  </p>
+
+  <%= f.submit class: "myButton" %>
+<% end %>
+ 

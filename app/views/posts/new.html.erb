@@ -1,6 +1,6 @@
 <div class="read_post">
 <p class="p"><b>New post</b></p>
-	<%= form_for :posts, url: group_posts_path(@group) do |f| %>
+	<%= form_for :post, url: group_posts_path(@group) do |f| %>
 	  <p>
 	    <%= f.label :title %><br>
 	    <%= f.text_field :title, class: "lable" %>

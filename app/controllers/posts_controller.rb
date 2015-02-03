@@ -22,11 +22,26 @@ class PostsController < ApplicationController
 	  @post.user_id = current_user.id
     @post.group_id = params[:group_id]
 	  if @post.save
-   redirect_to group_post_path(@post.group_id, @post)
+      redirect_to group_post_path(@post.group_id, @post)
     else
       render 'new'
     end
 	end
+
+  def edit
+    @group = Group.find(params[:group_id])
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @group = Group.find(params[:group_id])
+    if @post.update(post_params)
+      redirect_to group_post_path(@group, @post)
+    else
+      render 'edit'
+    end
+  end
 
   def user_posts
     @posts = current_user.posts
@@ -35,7 +50,7 @@ class PostsController < ApplicationController
 	private
   
   def post_params
-    params.require(:posts).permit(:title, :text)
+    params.require(:post).permit(:title, :text)
   end
 
 end
