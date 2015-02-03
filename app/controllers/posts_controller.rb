@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   def edit
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def update
@@ -47,7 +48,7 @@ class PostsController < ApplicationController
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
     @post.destroy
- 
+    authorize @post
     redirect_to group_path(@group.id)
   end
 

@@ -9,4 +9,17 @@ class PostPolicy
   def show?
     user.admin? or not post.published?
   end
+
+  def update?
+    @post.user_id == @user.id
+  end
+
+  def edit?
+    update?
+  end
+
+  def destroy?
+    @post.user_id == current_user.id
+  end
+
 end
