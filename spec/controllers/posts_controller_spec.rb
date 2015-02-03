@@ -101,4 +101,13 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
+  describe "DELETE destroy" do
+    let(:post_delete) {FactoryGirl.create(:post, text: "my text", group_id: group.id)}
+
+    it "should delete the post passes" do
+      delete :destroy, group_id: post_delete.group_id, id: post_delete.id
+      expect(response).to redirect_to(group_path(post_delete.group_id))
+    end
+  end
+
 end

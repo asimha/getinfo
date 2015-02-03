@@ -1,8 +1,11 @@
 <div class="read_post">
 	<article>
 		<p>Written by: <%= @user.email %></p>
+		
 		<% if @post.user_id == current_user.id %>
-		<%= link_to 'Edit', edit_group_post_path(@post.group_id, @post) %>
+			<%= link_to 'Edit', edit_group_post_path(@post.group_id, @post) %>
+			<%= link_to 'Delete', group_post_path(@group.id, @post), method: :delete,
+	              data: { confirm: 'Are you sure?' } %>
 		<% end %>
 		<p>
 		  <h1><u><%= @post.title %></u></h1>

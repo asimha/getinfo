@@ -135,6 +135,24 @@ end
   
   end
 
+  feature "Delete post" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user.id )}
+    let(:post) {FactoryGirl.create(:post, title: "New post", text: "loriem ipsum", user_id: user.id, group_id:group.id)}
+
+    scenario "user should be able to delete the post he created" do
+      post
+      capybara_sign_in
+      visit "/groups/#{group.id}/posts/#{post.id}/"
+      expect(page).to have_text("New post")
+      expect(page).to have_text("loriem ipsum")
+      click_link "Delete"
+      expect(page).not_to have_text("New post")
+      expect(page).not_to have_text("loriem ipsum")
+    end
+  end
+
+
 def capybara_sign_in
   visit "/users/sign_in"
     expect(page).to have_text("Log in")
