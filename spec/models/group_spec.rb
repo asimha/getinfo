@@ -23,11 +23,13 @@ RSpec.describe Group, :type => :model do
     it "should check weather the user is member of the group" do
       member
       expect(group.is_member?(user)).to be_truthy
+      expect(group.is_member?(user1)).to be_falsey
     end
 
     it "should return true if user is requested for member" do
       member1
       expect(group.is_requested_member?(user1)).to be_truthy
+      expect(group.is_requested_member?(user)).to be_falsey
     end
   
   end

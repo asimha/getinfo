@@ -65,14 +65,5 @@ describe "GET unfollow" do
       expect(user.following?(group0)).to eq(false)
     end
   end
-
-# describe "GET group_members" do
-
-#   let(:user1) {FactoryGirl.create(:user)}
-#   let(:member) {FactoryGirl.create(:member, :user_id, user1.id, group_id: group0.id)}
-#   it "should return all the confirmed and unconfirmed members" do
-#     get :group_members, id: group0.id
-#     expect().to be()
-#   end
-# end
+  
 end
