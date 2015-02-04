@@ -210,10 +210,8 @@ end
   feature "Permission to create post" do
     let(:user) {FactoryGirl.create(:user)}
     let(:user1) {FactoryGirl.create(:user)}
-    let(:user2) {FactoryGirl.create(:user)}
     let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user1.id )}
     let(:member1) {FactoryGirl.create(:member, user_id: user.id, group_id: group.id, is_confirmed: true )}
-    let(:member2) {FactoryGirl.create(:member, user_id: user2.id, group_id: group.id, is_confirmed: false )}
     scenario "members should be able to create the post" do
       member1
       capybara_sign_in
