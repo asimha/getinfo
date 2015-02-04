@@ -1,0 +1,10 @@
+<div class="read_post">
+<p class="p"><b>Edit Group</b></p>
+  <%= form_for :group, method: 'patch', url: group_path(@group) do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "lable", id: 'group_name' %>
+    </p>
+    <%= f.submit class: "myButton" %>
+  <% end %>
+</div>

@@ -27,6 +27,19 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to group_path(@group)
+    else
+      render 'edit'
+    end
+  end
+
   def my_groups
     @groups = Group.where("user_id = ?", current_user.id)
   end
@@ -52,6 +65,6 @@ class GroupsController < ApplicationController
   private
   
   def group_params
-    params.require(:groups).permit(:name)
+    params.require(:group).permit(:name)
   end
 end

@@ -1,7 +1,7 @@
 <div class="box" >		
 		<h2><%= link_to_if current_user.following?(group), group.name, group_path(group) %></h2>	
-	<%= link_to "Unfollow", unfollow_group_path(group) if group.display_follow_button?(current_user, group) %>
+	<%= link_to "Unfollow", unfollow_group_path(group), class: "smallButton" if group.display_follow_button?(current_user, group) %>
 		
-	<%= link_to "Follow", follow_group_path(group) if group.display_unfollow_button?(current_user, group) %>
+	<%= link_to "Follow", follow_group_path(group), class: "smallButton" if group.display_unfollow_button?(current_user, group) %>
 	
 </div>

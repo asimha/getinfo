@@ -1,16 +1,21 @@
-Requested users
+<div class = "requested_users" >
+<h3>Requested users</h3>
 </br>
 <% @unconfirmed_members.each do |m| %>
- <%= m.user.email %>
- <%= link_to "confirm", group_member_path(m.group.id, m), method: 'put' %>
+ <li><%= m.user.email %>
+ <%= link_to "confirm", group_member_path(m.group.id, m), method: 'put', class: "smallButton" if m.group.user_id == current_user.id %></li>
 <% end %>
+</div>
 </br>
 </br>
 </br>
-Members
+<div class = "group_members">
+<h3>Members<h3/>
 </br>
+
 <% @confirmed_members.each do |m| %>
-<%= link_to 'Delete', group_member_path(m.group.id, m), method: :delete,
-                data: { confirm: 'Are you sure?' } %>
- <%= m.user.email %>
+  <li><%= m.user.email %>
+  <%= link_to 'Delete', group_member_path(m.group.id, m), method: :delete, class: "smallButton",
+                  data: { confirm: 'Are you sure?' } if m.group.user_id == current_user.id %></li>
 <% end %>
+</div>

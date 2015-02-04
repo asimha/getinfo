@@ -24,7 +24,7 @@ RSpec.describe GroupsController, :type => :controller do
     it "should able to create the group" do
       sign_in(user)
       group_params = {
-        groups: {
+        group: {
           name: "My Group",
         }
       }
@@ -40,6 +40,21 @@ RSpec.describe GroupsController, :type => :controller do
       
       get :show, id: group0.id
       expect(assigns[:posts]).to include(post1)
+    end
+  end
+
+  describe "PUT update" do
+    let(:group_update) {FactoryGirl.create(:group, name: "text")}
+    
+    it "should be able to update the post" do
+      group_params = {
+        id: group_update.id,
+        group: {
+          name: "changed text"
+        }
+      }
+      put :update, group_params
+      expect(response).to redirect_to(group_path(group_update))
     end
   end
 

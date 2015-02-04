@@ -5,8 +5,9 @@
 
 <div class= "group_owner">
   Owner: <%= @user.email %>
+  <%= link_to 'Edit Group name', edit_group_path(@group), class: "smallButton" if @group.user_id == current_user.id %>
 </div>
-  <%= link_to 'Groups Members', group_members_group_path(@group), class: "myButton" %>
+  <%= link_to 'Groups Members', group_members_group_path(@group), class: "myButton" if @group.user_id == current_user.id %>
 <% if @group.user_id != current_user.id %>
 
   <% if !@group.is_member?(current_user) && !@group.is_requested_member?(current_user)%>
@@ -16,7 +17,7 @@
 <% end %>
 
 <% if @group.is_requested_member?(current_user) %>
-  <p> Request pending </p>
+  <p class = "smallButton"> Request pending </p>
 <% end %>
 
 <% if @group.is_member?(current_user) || @group.user_id == current_user.id %>

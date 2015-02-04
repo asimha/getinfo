@@ -1,10 +1,10 @@
 <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout" %>
 <div class="header">
-	<div>
-	<h1>GetInfo</h1>
-		<%= link_to 'Create post', new_group_post_path(@group), method: "get", class: "myButton" %>
-		<%= link_to 'My post', posts_user_posts_path, method: "get", class: "myButton" %>
-	</div>
+  <h1>GetInfo</h1>
+<div/>
+<div class ="header_link">
+  <%= link_to 'Create post', new_group_post_path(@group), method: "get", class: "myButton" %>
+  <%= link_to 'My post', posts_user_posts_path, method: "get", class: "myButton" %>
 </div>
 
 <div class="div-col">

@@ -24,12 +24,16 @@
   }
 
  .header{
- 	padding: 10px 40px 40px;
+ 	padding: 5px 40px;
  	text-align: center;
  	color: #A83636;
 	font-size: 30px;
 	text-shadow: rgb(46, 46, 46) 0px 4px 5px;
-	background: #F5F1F0;	 	
+ }
+
+ .header_link{
+ 	padding: 5px 40px;
+ 	text-align: center;
  }
 
  .title{

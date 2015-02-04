@@ -1,5 +1,5 @@
 body {
-background: #F5F1F0;
+background: #F9F5FA;
 }
 
 .log_in_form{
@@ -44,6 +44,35 @@ background: #F5F1F0;
 	position: absolute; 
 	right: 50px;
 	font-size: 15px;
+}
+
+.smallButton {
+	background-color:#7892c2;
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:13px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:12px;
+	padding:5px 10px;
+	text-decoration:none;
+}
+
+.requested_users{
+	position: fixed;
+    top: 250px;
+    left: 25%;
+    padding: 20px;
+}
+
+.group_members{
+	position: fixed;
+    top: 250px;
+    left: 50%;
+    padding: 20px;
 }
 
 
