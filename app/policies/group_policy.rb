@@ -9,4 +9,8 @@ class GroupPolicy
   def show?
     group.user_id == user.id or user.following?(group)
   end
+
+  def edit?
+    group.user_id == user.id
+  end
 end

@@ -5,6 +5,7 @@ background: #F9F5FA;
 .log_in_form{
 	color: #EDF5F7;
 	background-color: #72756F;
+	border-radius: 15px;
 	padding: 100px 0px 100px 0px;
 	margin: 10px 400px 500px 400px ;
 }

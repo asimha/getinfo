@@ -153,6 +153,78 @@ end
   end
 
 
+  feature "Request member" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:user1) {FactoryGirl.create(:user)}
+    let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user1.id )}
+
+    scenario "User can be able to request for member" do
+      user
+      capybara_sign_in
+      user.follow(group)
+      visit "/groups/#{group.id}"
+      expect(page).to have_link("Request member")
+      click_link "Request member"
+      expect(page).to have_text("Request pending")
+    end
+  end
+
+  feature "accept member" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:user1) {FactoryGirl.create(:user)}
+    let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user.id )}
+    let(:member) {FactoryGirl.create(:member, user_id: user1.id, group_id: group.id, is_confirmed: false )}
+    scenario "user should be able see the member request" do
+      member
+      capybara_sign_in
+      user.follow(group)
+      visit "/groups/#{group.id}"
+      click_link "Group Members"
+      expect(page).to have_text("Requested users")
+      expect(page).to have_text("Members")
+      expect(page).to have_text(user1.email)
+      expect(page).to have_link("confirm")
+    end
+  end
+
+  feature "delete member" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:user1) {FactoryGirl.create(:user)}
+    let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user.id )}
+    let(:member) {FactoryGirl.create(:member, user_id: user1.id, group_id: group.id, is_confirmed: true )}
+    scenario "user should be able to delete the member" do
+      member
+      capybara_sign_in
+      user.follow(group)
+      visit "/groups/#{group.id}"
+      click_link "Group Members"
+      expect(page).to have_text("Requested users")
+      expect(page).to have_text("Members")
+      expect(page).to have_text(user1.email)
+      expect(page).to have_link("Delete")
+    end
+
+  end
+
+
+  feature "Permission to create post" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:user1) {FactoryGirl.create(:user)}
+    let(:user2) {FactoryGirl.create(:user)}
+    let(:group) {FactoryGirl.create(:group, name: "user group", user_id: user1.id )}
+    let(:member1) {FactoryGirl.create(:member, user_id: user.id, group_id: group.id, is_confirmed: true )}
+    let(:member2) {FactoryGirl.create(:member, user_id: user2.id, group_id: group.id, is_confirmed: false )}
+    scenario "members should be able to create the post" do
+      member1
+      capybara_sign_in
+      user.follow(group)
+      visit "/groups/#{group.id}"
+      expect(page).to have_link("Create Post")
+    end
+  end
+
+
+
 def capybara_sign_in
   visit "/users/sign_in"
     expect(page).to have_text("Log in")
