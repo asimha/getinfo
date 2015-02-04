@@ -11,8 +11,8 @@ feature "Group" do
   scenario "user should be able to create a group" do
     click_link "Create Group"
     expect(page).to have_selector("*/form/p/input")
-    fill_in "groups[name]", with: "My Group"
-    click_button "Save Groups"
+    fill_in "group[name]", with: "My Group"
+    click_button "Save Group"
     expect(page).to have_link("My Group")
   end
 
