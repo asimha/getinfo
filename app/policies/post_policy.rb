@@ -19,7 +19,7 @@ class PostPolicy
   end
 
   def destroy?
-    @post.user_id == current_user.id
+    @post.user_id == @user.id
   end
 
 end

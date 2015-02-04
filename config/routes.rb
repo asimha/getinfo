@@ -18,9 +18,11 @@ Rails.application.routes.draw do
     member do
       get :follow
       get :unfollow
+      get :group_members
     end
 
     resources :posts
+    resources :members
     
   end
   # Example of regular route:

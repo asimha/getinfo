@@ -1,7 +1,8 @@
 class Group < ActiveRecord::Base
 	
 	#association
-	has_many :users, :dependent => :destroy
+	has_many :members
+	has_many :users, :dependent => :destroy, :through => :members
 	has_many :posts, :dependent => :destroy
 
 	#validations
@@ -16,5 +17,15 @@ class Group < ActiveRecord::Base
 	def display_unfollow_button?(user, group)
 		!user.following?(group) && user.id != group.user_id
 	end
+
+	def is_member?(user)
+    mem = Member.where("user_id = ? and group_id = ? and is_confirmed = ?", user.id, self.id, true).first
+    return true if mem.present? 
+  end
+
+  def is_requested_member?(user)
+    mem = Member.where("user_id = ? and group_id = ? and is_confirmed = ?", user.id, self.id, false).first
+    return true if mem.present? 
+  end
 	
 end

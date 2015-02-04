@@ -1,0 +1,16 @@
+Requested users
+</br>
+<% @unconfirmed_members.each do |m| %>
+ <%= m.user.email %>
+ <%= link_to "confirm", group_member_path(m.group.id, m), method: 'put' %>
+<% end %>
+</br>
+</br>
+</br>
+Members
+</br>
+<% @confirmed_members.each do |m| %>
+<%= link_to 'Delete', group_member_path(m.group.id, m), method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+ <%= m.user.email %>
+<% end %>

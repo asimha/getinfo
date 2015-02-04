@@ -40,3 +40,10 @@ background: #F5F1F0;
 	padding: 10px;
 }
 
+ .logout {
+	position: absolute; 
+	right: 50px;
+	font-size: 15px;
+}
+
+

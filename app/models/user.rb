@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   #associations
   has_many :posts, :dependent => :destroy
-  has_many :groups, :dependent => :destroy
+  has_many :members
+  has_many :groups, :dependent => :destroy, :through => :members
 
   acts_as_follower
   

@@ -31,11 +31,16 @@ class GroupsController < ApplicationController
     @groups = Group.where("user_id = ?", current_user.id)
   end
 
-   def follow
+  def follow
     @group = Group.find(params[:id])
     current_user.follow(@group)
     current_user.save
     redirect_to groups_path
+  end
+
+  def group_members
+    @unconfirmed_members = Member.where("group_id = ? and is_confirmed = ?", params[:id], false)
+    @confirmed_members = Member.where("group_id = ? and is_confirmed = ?", params[:id], true)
   end
 
   def unfollow

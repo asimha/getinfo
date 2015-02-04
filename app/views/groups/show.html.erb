@@ -2,11 +2,26 @@
   <%= @group.name %>
 </div>
 
+
 <div class= "group_owner">
   Owner: <%= @user.email %>
 </div>
+  <%= link_to 'Groups Members', group_members_group_path(@group), class: "myButton" %>
+<% if @group.user_id != current_user.id %>
 
-<%= link_to "Create Post", new_group_post_path(@group.id), class: 'myButton' %>
+  <% if !@group.is_member?(current_user) && !@group.is_requested_member?(current_user)%>
+    <%= link_to 'request member', group_members_path(@group.id), method: 'post', id: "request_member", remote: true, class: "myButton" %>
+  <% end %>
+
+<% end %>
+
+<% if @group.is_requested_member?(current_user) %>
+  <p> Request pending </p>
+<% end %>
+
+<% if @group.is_member?(current_user) || @group.user_id == current_user.id %>
+  <%= link_to "Create Post", new_group_post_path(@group.id), class: 'myButton' %>
+<% end %>
 
 <div class="read_post">
 	<% @posts.each do |post| %>
