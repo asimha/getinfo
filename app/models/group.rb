@@ -19,13 +19,13 @@ class Group < ActiveRecord::Base
 	end
 
 	def is_member?(user)
-    mem = Member.where("user_id = ? and group_id = ? and is_confirmed = ?", user.id, self.id, true).first
-    return true if mem.present? 
+    result = Member.where("user_id = ? and group_id = ? and is_confirmed = ?", user.id, self.id, true).first
+    return true if result.present? 
   end
 
   def is_requested_member?(user)
-    mem = Member.where("user_id = ? and group_id = ? and is_confirmed = ?", user.id, self.id, false).first
-    return true if mem.present? 
+    result = Member.where("user_id = ? and group_id = ? and is_confirmed = ?", user.id, self.id, false).first
+    return true if result.present? 
   end
 	
 end
