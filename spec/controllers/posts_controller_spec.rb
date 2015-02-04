@@ -10,8 +10,8 @@ RSpec.describe PostsController, :type => :controller do
   let(:group) {FactoryGirl.create(:group, user_id: user.id)}
 
 	before(:each) do
-   sign_in(user)
- end
+    sign_in(user)
+  end
 
   describe "GET index" do
     it "returns http success" do

@@ -11,7 +11,7 @@ class MembersController < ApplicationController
     @member.is_confirmed = false
     respond_to do |format|
       if @member.save
-        format.html {redirect__to group_path(@member.group_id) }
+        format.html {redirect_to group_path(@member.group_id) }
         format.js {}
       else
         format.html { render action: "new" }
