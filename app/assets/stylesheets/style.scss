@@ -1,5 +1,9 @@
 body {
-background: #F9F5FA;
+background-image: url('back_3.jpg');
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
 }
 
 .log_in_form{
