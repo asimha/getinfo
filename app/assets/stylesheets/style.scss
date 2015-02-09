@@ -20,7 +20,10 @@ background-size: cover;
  }
 
 .log_in_form{
-	background-color: #dddddd;
+	background: -webkit-linear-gradient(top, rgba(221,221,221,0), rgba(221,221,221,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, rgba(221,221,221,0), rgba(221,221,221,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, rgba(221,221,221,0), rgba(221,221,221,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, rgba(221,221,221,0), rgba(221,221,221,1)); /* Standard syntax (must be last) */
 	border-radius: 15px;
 	padding: 100px 0px 100px 0px;
 	margin: 10px 400px 500px 400px ;
