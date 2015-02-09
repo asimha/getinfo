@@ -3,7 +3,7 @@
 </br>
 <% @unconfirmed_members.each do |m| %>
  <li><%= m.user.email %>
- <%= link_to "confirm", group_member_path(m.group.id, m), method: 'put', class: "smallButton" if m.group.user_id == current_user.id %></li>
+ <%= link_to "confirm", group_member_path(m.group.id, m), method: 'put', remote: true , class: "smallButton" if m.group.user_id == current_user.id %></li>
 <% end %>
 </div>
 </br>
