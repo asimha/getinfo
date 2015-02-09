@@ -30,6 +30,7 @@ gem "acts_as_follower"
 
 gem "pundit"
 
+gem 'kaminari'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

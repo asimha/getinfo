@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = User.find(@group.user_id)
-    @posts = @group.posts
+    @posts = @group.posts.page(params[:page]).per(4)
     authorize @group
   end
 
