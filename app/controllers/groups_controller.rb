@@ -48,8 +48,12 @@ class GroupsController < ApplicationController
   def follow
     @group = Group.find(params[:id])
     current_user.follow(@group)
-    current_user.save
-    redirect_to groups_path
+    respond_to do |format|
+      if current_user.save
+        format.html {redirect_to redirect_to groups_path }
+        format.js {}
+      end
+    end
   end
 
   def group_members
@@ -60,9 +64,14 @@ class GroupsController < ApplicationController
   def unfollow
     @group = Group.find(params[:id])
     current_user.stop_following(@group)
-    current_user.save
-    redirect_to groups_path
+    respond_to do |format|
+      if current_user.save
+        format.html {redirect_to redirect_to groups_path }
+        format.js {}
+      end
+    end
   end
+
   private
   
   def group_params
