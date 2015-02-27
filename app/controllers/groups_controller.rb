@@ -50,7 +50,7 @@ class GroupsController < ApplicationController
     current_user.follow(@group)
     respond_to do |format|
       if current_user.save
-        format.html {redirect_to redirect_to groups_path }
+        format.html { redirect_to groups_path }
         format.js {}
       end
     end
@@ -66,7 +66,7 @@ class GroupsController < ApplicationController
     current_user.stop_following(@group)
     respond_to do |format|
       if current_user.save
-        format.html {redirect_to redirect_to groups_path }
+        format.html { redirect_to groups_path }
         format.js {}
       end
     end
