@@ -21,7 +21,9 @@ Rails.application.routes.draw do
       get :group_members
     end
 
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
     resources :members
     
   end

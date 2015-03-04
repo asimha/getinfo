@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
 	#associaton
 	belongs_to :user
+  has_many :comments
 
 	
 	#validations

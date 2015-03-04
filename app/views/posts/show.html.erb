@@ -16,5 +16,12 @@
 		</p>
 	</article>
 
+
+	<article>
+		<p> <u>Comments</u> </p>
+		<% @post.comments.each do |c| %>
+			<P><%= c.text %></P>
+		<% end %>
+	</article>
 <%= link_to "Home", root_path, class: 'myButton' %>
 </div>
