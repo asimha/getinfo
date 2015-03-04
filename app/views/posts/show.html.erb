@@ -21,7 +21,15 @@
 		<p> <u>Comments</u> </p>
 		<% @post.comments.each do |c| %>
 			<P><%= c.text %></P>
+			<hr/>
 		<% end %>
 	</article>
+	 <%= form_for :comment, url: group_post_comments_path(@post.group_id, @post.id) do |f| %>
+	  <p>
+	    <%= f.label :comment %><br>
+	    <%= f.text_area :text, required: true %>
+	  </p>
+	  <%= f.submit %>
+	 <% end %>
 <%= link_to "Home", root_path, class: 'myButton' %>
 </div>
