@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
   has_many :members
   has_many :groups, :dependent => :destroy, :through => :members
+  has_many :comments
 
   acts_as_follower
   

@@ -18,8 +18,13 @@
 
 
 	<article>
-		<p> <u>Comments</u> </p>
+		<h1> <u>Comments</u> </h1>
 		<% @post.comments.each do |c| %>
+			<P>
+				Commente by: <%= c.user.email %>
+				<%= link_to 'Delete', group_post_comment_path(@group.id, @post, c.id), method: :delete,
+	              data: { confirm: 'Are you sure?' }, class: "smallButton" if current_user == c.user || current_user == @post.user %>
+	    </P>
 			<P><%= c.text %></P>
 			<hr/>
 		<% end %>

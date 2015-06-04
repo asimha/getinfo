@@ -19,6 +19,15 @@ class CommentsController < ApplicationController
     @comments = Comment.where('post_id = ?', params[:post_id] )
   end
 
+  def destroy
+    @group = Group.find(params[:group_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @user = current_user
+    @comment.destroy
+    redirect_to group_post_path(@group.id, @post.id)
+  end
+
   private
 
   def comment_params
