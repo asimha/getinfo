@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :members
   has_many :groups, :dependent => :destroy, :through => :members
   has_many :comments
+  has_many :messages
 
   acts_as_follower
   

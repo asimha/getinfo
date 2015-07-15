@@ -1,4 +1,4 @@
 <li>
-  <span class="created_at"><%= message.created_at.strftime("%H:%M") %></span>
+  <span class="created_at"><strong><%= message.user.email.split('@')[0] if message.user.present? %></strong> : </span>
   <%= message.message %>
 </li>
